@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	<style>
+        .redDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            padding:2px 2px 2px 2px;
+        }
+
+        .yellowDiv {
+
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            padding:2px 2px 2px 2px;
+        }
+    </style>
+</head>
+<body ng-controller="demo1"> 
+	<h4>{{message}}</h4>
+
+	<br>
+
+	 		Message: <br /> <hr>
+        		{{message}}<br /> <hr>
+        			<span ng-bind="message"></span> <br />
+        	<input type="text" ng-model="message" /> 
+        	<hr>
+        	<br>
+
+        	<!-- More Than One Controller -->
+        	<div ng-controller="parentController">
+        		Controller Name: {{controllerName}} <br />
+        		Message: {{message}} <br />
+		        <div style="margin:10px 0 10px 20px;" ng-controller="childController">
+		            Controller Name: {{controllerName}} <br />
+		            Message: {{message}} <br />
+		        </div>
+    	</div>
+		    <div  ng-controller="siblingController">
+		        Controller Name: {{controllerName}} <br />
+		        Message: {{message}} <br />
+		    </div>
+    <!-- More Than One Controller /-->
+
+    <!-- Events -->
+    	<button ng-click="DisplayMessage(password)">Demo1</button>
+    	<br>
+    	<hr>
+    	 <div ng-controller="demo1">
+    	 	<div ng-class="{redDiv: enter, yellowDiv: leave}" ng-mouseenter="enter=true;leave=false;" ng-mouseleave="leave=true;enter=false">
+        Mouse <span ng-show="enter">Enter</span> <span ng-show="leave">Leave</span>
+    		</div>
+    		<hr>
+    		<br>
+    			 Default currency: {{person.salary | currency}} <br />
+        			Custom currency identifier: {{person.salary | currency:'Rs.'}} <br />
+        			No Fraction: {{person.salary | currency:'Rs.':0}} <br />
+        		 Fraction 2: <span ng-bind="person.salary| currency:'GBP':2"></span>
+
+        		 <hr>
+        		 <br>
+        		 <div ng-init="person.DOB = 323234234898">
+        		Default date: {{person.DOB| date}} <br />
+        		Short date: {{person.DOB| date:'short'}} <br />
+        		Long date: {{person.DOB | date:'longDate'}} <br />
+        		Year: {{person.DOB | date:'yyyy'}} <br />
+    </div>
+    	 </div>
+    <!-- Events /-->
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="common.js"></script>
+</body>
+</html>
